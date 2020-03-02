@@ -1,0 +1,16 @@
+---
+- name: Verify DNS records
+  hosts: all
+  tasks:
+    - name: Include get authorized_keys
+      include: ../resources/playbooks/get_zone_records.yml
+      delegate_to: localhost
+      run_once: yes
+    - name: Verify zone record
+      assert:
+        that:
+          - "{{ (get_zone_records_result.json.result | selectattr('name', 'equalto', item.name + '.' + cloudflare_dns_zone) | first).content == item.value }}"
+        msg: "Record for {{ item.name }} doesn't match expected value {{ item.value }}."
+      delegate_to: localhost
+      run_once: yes
+      loop: "{{ cloudflare_dns_all_records }}"

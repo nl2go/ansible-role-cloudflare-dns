@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: nl2go
+  role_name: cloudflare_dns
+  description: Manage Cloudflare DNS (https://api.cloudflare.com) using Ansible.
+  company: Newsletter2Go GmbH
+  issue_tracker_url: https://github.com/nl2go/ansible-role-cloudflare-dns/issues
+  license: MIT
+  min_ansible_version: 2.6
+  github_branch: master
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - cloudflare
+    - dns
+dependencies: []

@@ -1,0 +1,29 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: instance
+    image: centos:7
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      all:
+        cloudflare_dns_zone: example.org
+        cloudflare_dns_account_email: "{{ lookup('env','CLOUDFLARE_DNS_ACCOUNT_EMAIL') }}"
+        cloudflare_dns_account_api_token: "{{ lookup('env','CLOUDFLARE_DNS_ACCOUNT_API_TOKEN') }}"
+        cloudflare_dns_host_records:
+          - name: "{{ inventory_hostname }}"
+            value: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+        cloudflare_dns_records: []
+        cloudflare_dns_all_records: "{{ cloudflare_dns_host_records + cloudflare_dns_records }}"
+  lint:
+    name: ansible-lint
+verifier:
+  name: ansible
+  lint:
+    name: ansible-lint
