@@ -12,10 +12,7 @@ before_script:
   - docker-compose up -d
 
 script:
-  - docker-compose exec \
-      -e CLOUDFLARE_DNS_ACCOUNT_EMAIL="$CLOUDFLARE_DNS_ACCOUNT_EMAIL" \
-      -e CLOUDFLARE_DNS_ACCOUNT_API_TOKEN="$CLOUDFLARE_DNS_ACCOUNT_API_TOKEN" \
-    molecule molecule test --all
+  - docker-compose exec -e CLOUDFLARE_DNS_ACCOUNT_EMAIL="$CLOUDFLARE_DNS_ACCOUNT_EMAIL" -e CLOUDFLARE_DNS_ACCOUNT_API_TOKEN="$CLOUDFLARE_DNS_ACCOUNT_API_TOKEN" molecule molecule test --all
 
 after_script:
   - docker-compose down
