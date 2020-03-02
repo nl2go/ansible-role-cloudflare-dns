@@ -1,7 +1,7 @@
 [![Travis (.org) branch](https://img.shields.io/travis/nl2go/ansible-role-cloudflare-dns/master)](https://travis-ci.org/nl2go/ansible-role-cloudflare-dns)
 [![Ansible Galaxy](https://img.shields.io/badge/role-nl2go.cloudflare_dns-blue.svg)](https://galaxy.ansible.com/nl2go/cloudflare_dns/)
 [![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/nl2go/ansible-role-cloudflare-dns)](https://galaxy.ansible.com/nl2go/cloudflare_dns)
-[![Ansible Galaxy Downloads](https://img.shields.io/ansible/role/d/45353.svg?color=blue)](https://galaxy.ansible.com/nl2go/cloudflare_dns/)
+[![Ansible Galaxy Downloads](https://img.shields.io/ansible/role/d/46951.svg?color=blue)](https://galaxy.ansible.com/nl2go/cloudflare_dns/)
 
 # Ansible Role: Cloudflare DNS
 
