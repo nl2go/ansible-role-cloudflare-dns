@@ -49,6 +49,16 @@ Use `zone` to override the DNS zone for a particular DNS entry.
 
 Add `state: absent` to ensure a DNS is removed.
 
+    cloudflare_dns_host_records:
+      - name: "{{ inventory_hostname }}"
+        value: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+
+DNS records for the inventory hosts are created based on the template above.
+
+    cloudflare_dns_all_records: "{{ cloudflare_dns_host_records + cloudflare_dns_records }}"
+    
+All managed DNS records are combined within the `cloudflare_dns_all_records` variable.
+
 ## Tags
 
 Tags can be used to limit the role execution to a particular task module. Following tags are available:
