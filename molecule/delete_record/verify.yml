@@ -1,5 +1,5 @@
 ---
-- name: Verify DNS records
+- name: Verify DNS records absent
   hosts: all
   tasks:
     - name: Get zone id
@@ -10,7 +10,7 @@
       include: ../resources/tasks/get_zone_records.yml
       delegate_to: localhost
       run_once: yes
-    - name: Verify zone records
-      include: ../resources/tasks/verify_zone_records.yml
+    - name: Verify zone records absent
+      include: ../resources/tasks/verify_zone_records_absent.yml
       delegate_to: localhost
       run_once: yes

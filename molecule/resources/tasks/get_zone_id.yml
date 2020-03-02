@@ -9,10 +9,3 @@
 - name: Get zone ID
   set_fact:
     zone_id: "{{ get_zones_result.json.result | selectattr('name', 'equalto', cloudflare_dns_zone) | map(attribute='id') | first }}"
-- name: Get zone records
-  uri:
-    url: "https://api.cloudflare.com/client/v4/zones/{{ zone_id }}/dns_records"
-    headers:
-      X-Auth-Email: "{{ cloudflare_dns_account_email }}"
-      X-Auth-Key: "{{ cloudflare_dns_account_api_token }}"
-  register: get_zone_records_result

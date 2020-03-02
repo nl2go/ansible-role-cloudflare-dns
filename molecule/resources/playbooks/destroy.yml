@@ -1,0 +1,10 @@
+---
+- name: Delete DNS records
+  hosts: localhost
+  tasks:
+    - name: Get zone id
+      include: ../tasks/get_zone_id.yml
+    - name: Get zone records
+      include: ../tasks/get_zone_records.yml
+    - name: Delete zone records
+      include: ../tasks/delete_zone_records.yml

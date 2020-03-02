@@ -1,0 +1,7 @@
+---
+- name: Verify zone record absent
+  assert:
+    that:
+      - "{{ get_zone_records_result.json.result | selectattr('name', 'equalto', item.name + '.' + cloudflare_dns_zone) | list | length == 0 }}"
+    msg: "Record {{ item.name }} was found unexpected."
+  loop: "{{ cloudflare_dns_all_records }}"

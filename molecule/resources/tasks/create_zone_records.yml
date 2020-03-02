@@ -1,0 +1,15 @@
+---
+- name: Create records
+  uri:
+    url: "https://api.cloudflare.com/client/v4/zones/{{ zone_id }}/dns_records"
+    headers:
+      X-Auth-Email: "{{ cloudflare_dns_account_email }}"
+      X-Auth-Key: "{{ cloudflare_dns_account_api_token }}"
+    method: POST
+    body_format: json
+    body:
+      type: A
+      name: "{{ item.name }}"
+      content: "{{ item.value }}"
+      ttl: 300
+  loop: "{{ cloudflare_dns_all_records }}"

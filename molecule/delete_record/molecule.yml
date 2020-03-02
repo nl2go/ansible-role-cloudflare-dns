@@ -20,6 +20,7 @@ provisioner:
         cloudflare_dns_host_records:
           - name: "{{ inventory_hostname }}"
             value: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+            state: absent
         cloudflare_dns_records: []
         cloudflare_dns_all_records: "{{ cloudflare_dns_host_records + cloudflare_dns_records }}"
   lint:

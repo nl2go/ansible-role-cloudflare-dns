@@ -1,0 +1,12 @@
+---
+- name: Create DNS records
+  hosts: all
+  tasks:
+    - name: Get zone id
+      include: ../resources/tasks/get_zone_id.yml
+      delegate_to: localhost
+      run_once: yes
+    - name: Get zone id
+      include: ../resources/tasks/create_zone_records.yml
+      delegate_to: localhost
+      run_once: yes

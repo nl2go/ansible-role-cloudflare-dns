@@ -1,0 +1,7 @@
+---
+- name: Verify zone record
+  assert:
+    that:
+      - "{{ (get_zone_records_result.json.result | selectattr('name', 'equalto', item.name + '.' + cloudflare_dns_zone) | first).content == item.value }}"
+    msg: "Record for {{ item.name }} doesn't match expected value {{ item.value }}."
+  loop: "{{ cloudflare_dns_all_records }}"

@@ -1,5 +1,5 @@
 ---
-- name: "Create Cloudflare DNS record"
+- name: "Manage Cloudflare DNS record"
   cloudflare_dns:
     account_email: "{{ item.email | default(cloudflare_dns_account_email) }}"
     account_api_token: "{{ item.token | default(cloudflare_dns_account_api_token) }}"
@@ -9,7 +9,7 @@
     ttl: "{{ item.ttl | default(300) }}"
     proxied: "{{ item.proxied | default('no') }}"
     priority: "{{ item.priority | default(1) }}"
-    solo:  "{{ item.solo | default('yes') }}"
+    solo:  "{{  item.solo | default('yes' if item.state is not defined or item.state == 'present' else 'no') }}"
     value: "{{ item.value }}"
     state: "{{ item.state | default('present') }}"
   delegate_to: localhost
