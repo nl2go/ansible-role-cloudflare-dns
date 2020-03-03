@@ -6,12 +6,12 @@
     zone: "{{ item.zone | default(cloudflare_dns_zone) }}"
     record: "{{ item.name }}"
     type: "{{ item.type | default('A') }}"
-    ttl: "{{ item.ttl | default(1) }}"
-    proxied: "{{ item.proxied | default('no') }}"
-    priority: "{{ item.priority | default(1) }}"
+    ttl: "{{ item.ttl | default(omit) }}"
+    proxied: "{{ item.proxied | default(omit) }}"
+    priority: "{{ item.priority | default(omit) }}"
     solo:  "{{  item.solo | default('yes' if item.state is not defined or item.state == 'present' else 'no') }}"
     value: "{{ item.value }}"
-    state: "{{ item.state | default('present') }}"
+    state: "{{ item.state | default(omit) }}"
   delegate_to: localhost
   loop: "{{ cloudflare_dns_all_records }}"
   tags: ["cloudflare_dns", "config"]
