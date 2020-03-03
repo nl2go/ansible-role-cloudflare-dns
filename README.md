@@ -51,7 +51,7 @@ Add `state: absent` to ensure a DNS record is removed.
 
     cloudflare_dns_host_records:
       - name: "{{ inventory_hostname }}"
-        value: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+        value: "{{ hostvars[inventory_hostname].ansible_default_ipv4.address }}"
 
 DNS records for the inventory hosts are created automatically based on the template above.
 

@@ -6,7 +6,7 @@
     zone: "{{ item.zone | default(cloudflare_dns_zone) }}"
     record: "{{ item.name }}"
     type: "{{ item.type | default('A') }}"
-    ttl: "{{ item.ttl | default(300) }}"
+    ttl: "{{ item.ttl | default(1) }}"
     proxied: "{{ item.proxied | default('no') }}"
     priority: "{{ item.priority | default(1) }}"
     solo:  "{{  item.solo | default('yes' if item.state is not defined or item.state == 'present' else 'no') }}"

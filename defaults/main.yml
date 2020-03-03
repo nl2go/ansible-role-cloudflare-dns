@@ -4,6 +4,6 @@ cloudflare_dns_account_api_token:
 cloudflare_dns_zone:
 cloudflare_dns_host_records:
   - name: "{{ inventory_hostname }}"
-    value: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+    value: "{{ hostvars[inventory_hostname].ansible_default_ipv4.address }}"
 cloudflare_dns_records: []
 cloudflare_dns_all_records: "{{ cloudflare_dns_host_records + cloudflare_dns_records }}"
